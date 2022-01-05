@@ -4,6 +4,7 @@ using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -12,6 +13,9 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using Weather.WeatherStation.Devices;
+using Weather.WeatherStation.Measures;
+using Weather.WeatherStation.Sensors;
 
 namespace Weather.WeatherStation.EntityFrameworkCore
 {
@@ -24,7 +28,13 @@ namespace Weather.WeatherStation.EntityFrameworkCore
         ITenantManagementDbContext
     {
         /* Add DbSet properties for your Aggregate Roots / Entities here. */
+
+        public DbSet<Device> Devices { get; set; }
         
+        public DbSet<Sensor> Sensors { get; set; }
+
+        public DbSet<Measure> Measures { get; set; }
+
         #region Entities from the modules
         
         /* Notice: We only implemented IIdentityDbContext and ITenantManagementDbContext
@@ -81,6 +91,27 @@ namespace Weather.WeatherStation.EntityFrameworkCore
             //    b.ConfigureByConvention(); //auto configure for the base class props
             //    //...
             //});
+
+            builder.Entity<Device>(b =>
+            {
+                b.ToTable(WeatherStationConsts.DbTablePrefix + "Devices", WeatherStationConsts.DbSchema);
+                b.ConfigureByConvention();
+
+            });
+
+            builder.Entity<Sensor>(b =>
+            {
+                b.ToTable(WeatherStationConsts.DbTablePrefix + "Sensors", WeatherStationConsts.DbSchema);
+                b.ConfigureByConvention();
+
+            });
+
+            builder.Entity<Measure>(b =>
+            {
+                b.ToTable(WeatherStationConsts.DbTablePrefix + "Measures", WeatherStationConsts.DbSchema);
+                b.ConfigureByConvention();
+
+            });
         }
     }
 }
