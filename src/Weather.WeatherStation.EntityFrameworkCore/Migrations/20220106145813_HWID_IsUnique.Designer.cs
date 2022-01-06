@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,10 @@ using Weather.WeatherStation.EntityFrameworkCore;
 namespace Weather.WeatherStation.Migrations
 {
     [DbContext(typeof(WeatherStationDbContext))]
-    partial class WeatherStationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220106145813_HWID_IsUnique")]
+    partial class HWID_IsUnique
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

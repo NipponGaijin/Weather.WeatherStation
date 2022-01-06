@@ -96,6 +96,8 @@ namespace Weather.WeatherStation.EntityFrameworkCore
             {
                 b.ToTable(WeatherStationConsts.DbTablePrefix + "Devices", WeatherStationConsts.DbSchema);
                 b.ConfigureByConvention();
+                b.Property(x => x.HWID).IsRequired().HasMaxLength(64);
+                b.HasIndex(x => x.HWID).IsUnique();
 
             });
 
@@ -103,6 +105,8 @@ namespace Weather.WeatherStation.EntityFrameworkCore
             {
                 b.ToTable(WeatherStationConsts.DbTablePrefix + "Sensors", WeatherStationConsts.DbSchema);
                 b.ConfigureByConvention();
+                b.Property(x => x.HWID).IsRequired().HasMaxLength(64);
+                b.HasIndex(x => x.HWID).IsUnique();
 
             });
 
@@ -110,7 +114,6 @@ namespace Weather.WeatherStation.EntityFrameworkCore
             {
                 b.ToTable(WeatherStationConsts.DbTablePrefix + "Measures", WeatherStationConsts.DbSchema);
                 b.ConfigureByConvention();
-
             });
         }
     }

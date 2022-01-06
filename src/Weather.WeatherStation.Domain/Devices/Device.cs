@@ -10,5 +10,7 @@ namespace Weather.WeatherStation.Devices
     public class Device: AuditedAggregateRoot<Guid>
     {
         public string Name { get; set; }
+
+        public string HWID { get; set; }
     }
 }

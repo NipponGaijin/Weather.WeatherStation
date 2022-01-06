@@ -22,17 +22,6 @@ namespace Weather.WeatherStation.Web.Menus
         {
             var administration = context.Menu.GetAdministration();
             var l = context.GetLocalizer<WeatherStationResource>();
-
-            context.Menu.Items.Insert(
-                0,
-                new ApplicationMenuItem(
-                    WeatherStationMenus.Home,
-                    l["Menu:Home"],
-                    "~/",
-                    icon: "fas fa-home",
-                    order: 0
-                )
-            );
             
             if (MultiTenancyConsts.IsEnabled)
             {

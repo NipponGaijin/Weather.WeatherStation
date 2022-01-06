@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,10 @@ using Weather.WeatherStation.EntityFrameworkCore;
 namespace Weather.WeatherStation.Migrations
 {
     [DbContext(typeof(WeatherStationDbContext))]
-    partial class WeatherStationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220106144553_Added_Hwid_field")]
+    partial class Added_Hwid_field
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1977,9 +1979,6 @@ namespace Weather.WeatherStation.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HWID")
-                        .IsUnique();
-
                     b.ToTable("AppDevices", (string)null);
                 });
 
@@ -2072,9 +2071,6 @@ namespace Weather.WeatherStation.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DeviceId");
-
-                    b.HasIndex("HWID")
-                        .IsUnique();
 
                     b.ToTable("AppSensors", (string)null);
                 });
