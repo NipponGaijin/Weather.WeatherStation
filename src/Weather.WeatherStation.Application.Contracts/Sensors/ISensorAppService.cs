@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
+using Weather.WeatherStation.Measures;
 using Weather.WeatherStation.Sensors.Create;
 
 namespace Weather.WeatherStation.Sensors
@@ -12,5 +13,7 @@ namespace Weather.WeatherStation.Sensors
         Task<SensorDto> CreateAsync(CreateSensorDto input);
         Task<List<SensorDto>> GetListAsync();
         Task<SensorDto> GetSensorByHwid(string hwid);
+
+        Task<List<MeasureDto>> GetMeasuresBySensorId(Guid sensorId);
     }
 }

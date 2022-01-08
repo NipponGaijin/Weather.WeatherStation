@@ -1,0 +1,14 @@
+﻿@page
+@model Weather.WeatherStation.Web.Pages.Measures.IndexModel
+@{
+}
+
+@section scripts {
+    <abp-script src="/Pages/Measures/Index.js" />
+    <abp-script src="/libs/chartjs/Chart.js" />
+}
+
+<div class="container-main">
+    <button class="back btn btn-primary m-2" id="back-btn"><i class="fas fa-angle-left"></i> Назад</button>
+    <canvas id="chart" height="200" @*style="display:flex;flex-direction:row"*@></canvas>
+</div>

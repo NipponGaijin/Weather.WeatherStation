@@ -1,0 +1,25 @@
+﻿@page
+@model Weather.WeatherStation.Web.Pages.Sensors.IndexModel
+@{
+    @section scripts {
+    <abp-script src="/Pages/Sensors/Index.js" />
+}
+}
+
+<div class="container">
+    <button class="back btn btn-primary m-2" id="back-btn"><i class="fas fa-angle-left"></i> Назад</button>
+    @if(Model.DeviceId == Guid.Empty)
+    {
+        return;
+    }
+
+
+
+    @foreach(var item in Model.Sensors)
+    {
+        <div class="list-elem bg-secondary text-white p-2 m-2 rounded" id="@item.Id">
+            <p>Название: @item.Name</p>
+            <p>Количество измерений: @Model.GetMeasuresAsync(item.Id).Result.Count</p>
+        </div>
+    }
+</div>

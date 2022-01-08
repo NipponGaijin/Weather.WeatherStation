@@ -17,7 +17,7 @@
 
     @foreach(var item in Model.Devices)
     {
-        <div class="list-elem bg-secondary text-white p-2 m-2" id="@item.Id">
+        <div class="list-elem bg-secondary text-white p-2 m-2 rounded" id="@item.Id">
             <p>Название: @item.Name</p>
             <p>Количество датчиков: @Model.GetSensorsAsync(item.Id).Result.Count</p>
         </div>
